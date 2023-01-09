@@ -18,11 +18,11 @@ const ProductTable = () => {
           {
             data.map(item => {
               return (
-                <tr key={item.id}>
-                  <td>{item.id}</td>
-                  <td><img src={item.picture} alt="Logo" /></td>
-                  <td>{item.name}</td>
-                  <td>{item.price}</td>
+                <tr key={item?.id}>
+                  <td>{item?.id}</td>
+                  <td><img src={item?.picture} alt="Logo" /></td>
+                  <td>{item?.name}</td>
+                  <td>{item?.price}</td>
                 </tr>
               )
             })
