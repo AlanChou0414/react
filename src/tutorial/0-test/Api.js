@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
+import useFetchApi from '../hooks/useFetchApi'
 
 // * css :
 import './Table.css'
-
-// * components :
-import axios from 'axios'
 
 // ? URL :
 /*
@@ -12,72 +10,60 @@ import axios from 'axios'
   user : 'https://reqres.in/api/users'
 */
 
-const Api = () => {
-  // use setData() to get API data ==>
-  const [data, setData] = useState([])
-  // use setQuery() to event input change ==>
-  const [query, setQuery] = useState('')
-  // use setUrl to get query value ==>
-  const [url, setUrl] = useState('https://hn.algolia.com/api/v1/search?query=redux')
-  // set isLoading state true || false to display Loading message ==>
-  const [isLoading, setIsLoading] = useState(false)
+const url = 'https://hn.algolia.com/api/v1/search?query=redux'
 
-  useEffect(() => {
-    const getData = async () => {
-      setIsLoading(true)
-      const res = await axios(url)
-      const data = await res.data.hits
-      setData(data)
-      setIsLoading(false)
-    }
-    getData()
-  }, [url])
+const Api = () => {
+  const [query, setQuery] = useState('')
+  const [{ data, isLoading, isError }, setUrl] = useFetchApi(url, { hits: [] })
 
   const handleQuery = (event) => {
     setQuery(event.target.value)
   }
-
-  const handleSearch = () => {
+  const handleSearch = (event) => {
     setUrl(`https://hn.algolia.com/api/v1/search?query=${query}`)
+    event.preventDefault()
   }
 
   return (
     <>
       <h1>API</h1>
-      <input
-        type="text"
-        placeholder='Redux'
-        onChange={handleQuery}
-      />
-      <input
-        type="button"
-        value="Search"
-        onClick={handleSearch}
-      />
-      <table>
-        <thead>
-          <tr>
-            <th>TITLE</th>
-            <th>LINK</th>
-          </tr>
-        </thead>
-        <tbody>
-          {
-            isLoading
-              ? (<h1>Loading...</h1>)
-              : (
-                  data.map(item => {
-                    return (
+      <form onSubmit={handleSearch}>
+        <input
+          type="text"
+          placeholder='Redux'
+          onChange={handleQuery}
+        />
+        <input
+          type="submit"
+          value="Search"
+        />
+      </form>
+      {isError
+        ? <h1>Something is wrong...</h1>
+        : (isLoading
+            ? <h1>Loading...</h1>
+            : <table>
+            <thead>
+              <tr>
+                <th>TITLE</th>
+                <th>LINK</th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                data.hits.map(item => {
+                  return (
                     <tr key={item.objectID}>
                       <td>{item.title}</td>
                       <td>{item.url}</td>
                     </tr>
-                    )
-                  })
-                )
-          }
-        </tbody>
-      </table>
+                  )
+                })
+              }
+            </tbody>
+          </table>
+          )
+      }
     </>
   )
 }
