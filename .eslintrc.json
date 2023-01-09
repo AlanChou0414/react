@@ -19,7 +19,7 @@
     "rules": {
       "no-console":0,
       "no-unused-vars":1,
-      "no-tabs":0,
+			"no-tabs":0,
       "react/prop-types":0
     }
 }
