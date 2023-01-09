@@ -1,18 +1,13 @@
-import React, { useState } from 'react'
+import React from 'react'
+//* import Counter from './0109/1-counter/Counter'
+//* import Link from './0109/2-map/Link'
+import ProductTable from './0109/3-product/ProductTable'
 
+//* useState Count
 const App = () => {
-  const [count, setCount] = useState(0)
-  const handleCountPlus = () => {
-    setCount(count + 1)
-  }
   return (
     <>
-      <h1>Count: {count}</h1>
-      <input
-        type='button'
-        value='PLUS'
-        onClick={handleCountPlus}
-      />
+      <ProductTable />
     </>
   )
 }
