@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import useFetchApi from '../hooks/useFetchApi'
+import useFetchApi from '../../hooks/useFetchApi'
 
 // * css :
 import './Table.css'
