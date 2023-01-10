@@ -9,7 +9,7 @@ const Parent = () => {
     <>
       <h1>Parent</h1>
       <p>{dataFromChild}</p>
-      <ChildA data={data} />
+      <ChildA dataFromChild={dataFromChild} data={data} />
       <ChildB setDataFromChild={setDataFromChild} />
     </>
   )

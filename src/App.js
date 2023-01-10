@@ -7,12 +7,13 @@ import React from 'react'
 //* import Parent from './tutorial/6-props/Parent'
 //* import Api from './tutorial/0-test/Api'
 // ? import ATable from './tutorial/0-test/aaa'
-import Parent from './tutorial/7-props2/Parent'
+//* import Parent from './tutorial/7-props2/Parent'
+import Menu from './tutorial/8-menu/Menu'
 
 const App = () => {
   return (
     <>
-      <Parent/>
+      <Menu/>
     </>
   )
 }
