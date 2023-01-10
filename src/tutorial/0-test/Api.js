@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import useFetchApi from '../../hooks/useFetchApi'
+import Table from './Table'
+import Form from './Form'
 
 // * css :
 import './Table.css'
@@ -16,52 +18,16 @@ const Api = () => {
   const [query, setQuery] = useState('')
   const [{ data, isLoading, isError }, setUrl] = useFetchApi(url, { hits: [] })
 
-  const handleQuery = (event) => {
-    setQuery(event.target.value)
-  }
-  const handleSearch = (event) => {
-    setUrl(`https://hn.algolia.com/api/v1/search?query=${query}`)
-    event.preventDefault()
-  }
-
   return (
     <>
+      {console.log('component render')}
       <h1>API</h1>
-      <form onSubmit={handleSearch}>
-        <input
-          type="text"
-          placeholder='Redux'
-          onChange={handleQuery}
-        />
-        <input
-          type="submit"
-          value="Search"
-        />
-      </form>
+      <Form setQuery={setQuery} setUrl={setUrl} query={query} />
       {isError
         ? <h1>Something is wrong...</h1>
         : (isLoading
             ? <h1>Loading...</h1>
-            : <table>
-            <thead>
-              <tr>
-                <th>TITLE</th>
-                <th>LINK</th>
-              </tr>
-            </thead>
-            <tbody>
-              {
-                data.hits.map(item => {
-                  return (
-                    <tr key={item.objectID}>
-                      <td>{item.title}</td>
-                      <td>{item.url}</td>
-                    </tr>
-                  )
-                })
-              }
-            </tbody>
-          </table>
+            : <Table data={data} />
           )
       }
     </>

@@ -1,28 +1,26 @@
-// ! Custom Hook
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
-const useFetchApi = (initUrl, initData) => {
-  const [data, setDate] = useState(initData)
+const useApi = (initUrl, initData) => {
+  const [data, setData] = useState(initData)
   const [url, setUrl] = useState(initUrl)
   const [isError, setIsError] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   useEffect(() => {
-    const fetchApi = async () => {
+    const getApi = async () => {
       setIsLoading(true)
       setIsError(false)
       try {
         const result = await axios(url)
-        setDate(result.data)
+        setData(result.data)
       } catch (error) {
         setIsError(true)
       }
       setIsLoading(false)
     }
-    fetchApi()
-    console.log('useEffect render')
-  }, [url])
+    getApi()
+  }, [])
   return [{ data, isError, isLoading }, setUrl]
 }
 
-export default useFetchApi
+export default useApi
