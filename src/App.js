@@ -11,12 +11,13 @@ import React from 'react'
 //* import Menu from './tutorial/8-menu/Menu'
 //* import Exam2 from './tutorial/9-Exam/Exam2'
 //* import ShoppingCart from './tutorial/9-Exam/ShoppingCart'
-import HTML5Form from './tutorial/10-form/HTML5Form'
+//* import HTML5Form from './tutorial/10-form/HTML5Form'
+import Exchange from './tutorial/10-form/Exchange'
 
 const App = () => {
   return (
     <>
-      <HTML5Form/>
+      <Exchange />
     </>
   )
 }
