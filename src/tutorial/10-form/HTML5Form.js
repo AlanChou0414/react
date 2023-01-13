@@ -24,6 +24,11 @@ const HTML5Form = () => {
       return { id: i, value: v, checked: false }
     })
   )
+
+  // select
+  const cityOptions = ['台北市', '台中市', '高雄市']
+  const [city, setCity] = useState('')
+
   return (
     <>
       <h1>可控表單元件</h1>
@@ -107,6 +112,8 @@ const HTML5Form = () => {
           })
         }
       </section>
+      <br />
+      <br />
       {/* checkbox-group-2 */}
       <section id="checkbox-group">
         <h2>核取方塊2(群組)(checkbox-group-2)</h2>
@@ -133,6 +140,27 @@ const HTML5Form = () => {
             )
           })
         }
+      </section>
+      <br />
+      <br />
+      {/* select */}
+      <section id='select'>
+        <h2>Dropdown</h2>
+        <select
+          value={city}
+          onChange={event => setCity(event.target.value)}
+        >
+          <option value="">--請選擇城市--</option>
+          {
+            cityOptions.map((item, index) => {
+              return (
+                <option key={index} value={item}>
+                  {item}
+                </option>
+              )
+            })
+          }
+        </select>
       </section>
     </>
   )
