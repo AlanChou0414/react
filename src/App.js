@@ -1,4 +1,5 @@
 import React from 'react'
+import BMI from './tutorial/10-BMI/BMI'
 //* import Counter from './0109/1-counter/Counter'
 //* import Link from './0109/2-map/Link'
 //* import ProductTable from './tutorial/3-product/ProductTable'
@@ -12,12 +13,12 @@ import React from 'react'
 //* import Exam2 from './tutorial/9-Exam/Exam2'
 //* import ShoppingCart from './tutorial/9-Exam/ShoppingCart'
 //* import HTML5Form from './tutorial/10-form/HTML5Form'
-import Exchange from './tutorial/10-form/Exchange'
+//* import Exchange from './tutorial/10-form/Exchange'
 
 const App = () => {
   return (
     <>
-      <Exchange />
+      <BMI />
     </>
   )
 }
