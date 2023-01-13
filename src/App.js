@@ -1,5 +1,6 @@
 import React from 'react'
-import BMI from './tutorial/10-BMI/BMI'
+import Birthday from './tutorial/12-Birthday/Birthday'
+//* import BMI from './tutorial/11-BMI/BMI'
 //* import Counter from './0109/1-counter/Counter'
 //* import Link from './0109/2-map/Link'
 //* import ProductTable from './tutorial/3-product/ProductTable'
@@ -18,7 +19,7 @@ import BMI from './tutorial/10-BMI/BMI'
 const App = () => {
   return (
     <>
-      <BMI />
+      <Birthday />
     </>
   )
 }
