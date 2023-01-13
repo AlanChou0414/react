@@ -10,9 +10,24 @@ const HTML5Form = () => {
   const handleRadioChange = (event) => {
     setRadioChange(event.target.value)
   }
+  const [agree, setAgree] = useState(false)
+  const [likeList, setLikeList] = useState(['西瓜'])
+  const fruitOptions = ['西瓜', '香蕉', '蘋果']
+  const handleCheckBoxChange = (event) => {
+    setAgree(event.target.checked)
+  }
+  const petOptions = ['貓', '狗', '兔']
+  // state中要記錄各選項的物件
+  // [ {id:1, value:'貓', checked:false} ,...]
+  const [pets, setPets] = useState(
+    petOptions.map((v, i) => {
+      return { id: i, value: v, checked: false }
+    })
+  )
   return (
     <>
       <h1>可控表單元件</h1>
+      {/* input */}
       <section id='input-text'>
         <h2>文字輸入框(input-text)</h2>
         <input
@@ -21,6 +36,9 @@ const HTML5Form = () => {
           onChange={handleInputChange}
         />
       </section>
+      <br />
+      <br />
+      {/* radio */}
       <section id='radio-group'>
         <h2>選項按鈕(radio-group)</h2>
         {
@@ -35,6 +53,82 @@ const HTML5Form = () => {
                   onChange={handleRadioChange}
                 />
                 <label htmlFor={index}>{item}</label>
+              </div>
+            )
+          })
+        }
+      </section>
+      <br />
+      <br />
+      {/* checkbox */}
+      <section>
+        <h2>Check Box (single)</h2>
+        <input
+          type="checkbox"
+          id="a"
+          checked={agree}
+          onChange={handleCheckBoxChange}
+        />
+        <label htmlFor="a">Agree</label>
+      </section>
+      <br />
+      <br />
+      {/* checkbox-group */}
+      <section>
+        {
+          fruitOptions.map((v, i) => {
+            return (
+              <div key={i}>
+                <input
+                  type="checkbox"
+                  value={v}
+                  checked={likeList.includes(v)}
+                  onChange={(e) => {
+                    const targetValue = e.target.value
+
+                    // 先判斷是否有在state陣列(likeList)中
+                    if (likeList.includes(targetValue)) {
+                      // 如果 有 在state陣列中 -> 從state陣列移除
+                      const newLikeList = likeList.filter((v2, i2) => {
+                        return v2 !== targetValue
+                      })
+
+                      setLikeList(newLikeList)
+                    } else {
+                      // 如果 沒有 在state陣列中 -> 加入到state陣列
+                      const newLikeList = [...likeList, targetValue]
+                      setLikeList(newLikeList)
+                    }
+                  }}
+                />
+                <label>{v}</label>
+              </div>
+            )
+          })
+        }
+      </section>
+      {/* checkbox-group-2 */}
+      <section id="checkbox-group">
+        <h2>核取方塊2(群組)(checkbox-group-2)</h2>
+        {
+          pets.map((v, i) => {
+            return (
+              <div key={i}>
+                <input
+                  type="checkbox"
+                  value={v.value}
+                  checked={v.checked}
+                  onChange={(e) => {
+                    const newPets = pets.map((v2, i2) => {
+                      if (v2.id === i) return { ...v2, checked: !v2.checked }
+
+                      return { ...v2 }
+                    })
+
+                    setPets(newPets)
+                  }}
+                />
+                <label>{v.value}</label>
               </div>
             )
           })
