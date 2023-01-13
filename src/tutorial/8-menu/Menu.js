@@ -2,37 +2,23 @@ import React, { useState } from 'react'
 import './Menu.css'
 
 const Menu = () => {
-  const [hover, setHover] = useState('')
-  const handleHover = () => {
-    setHover('active')
-  }
+  const [activeText, setActiveText] = useState('')
+  const menuItems = ['首頁', '關於我們', '產品']
   return (
     <>
       <ul>
-        <li>
-          <a
-            className={hover}
-            onMouseDown={handleHover}
-          >
-            首頁
-          </a>
-        </li>
-        <li>
-          <a
-            className={hover}
-            onMouseDown={handleHover}
-          >
-            關於我們
-          </a>
-        </li>
-        <li>
-          <a
-            className={hover}
-            onMouseDown={handleHover}
-          >
-            產品
-          </a>
-        </li>
+        {
+          menuItems.map((item, index) => {
+            return (
+              <li
+                key={index}
+                onClick={(e) => setActiveText(e.target.value)}
+              >
+                <a href='#' className={activeText === item ? 'active' : ''}>{item}</a>
+              </li>
+            )
+          })
+        }
       </ul>
     </>
   )

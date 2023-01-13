@@ -8,12 +8,15 @@ import React from 'react'
 //* import Api from './tutorial/0-test/Api'
 // ? import ATable from './tutorial/0-test/aaa'
 //* import Parent from './tutorial/7-props2/Parent'
-import Menu from './tutorial/8-menu/Menu'
+//* import Menu from './tutorial/8-menu/Menu'
+//* import Exam2 from './tutorial/9-Exam/Exam2'
+//* import ShoppingCart from './tutorial/9-Exam/ShoppingCart'
+import HTML5Form from './tutorial/10-form/HTML5Form'
 
 const App = () => {
   return (
     <>
-      <Menu/>
+      <HTML5Form/>
     </>
   )
 }
