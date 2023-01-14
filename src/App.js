@@ -16,14 +16,14 @@ import React from 'react'
 //* import ShoppingCart from './tutorial/9-Exam/ShoppingCart'
 //* import HTML5Form from './tutorial/10-form/HTML5Form'
 //* import Exchange from './tutorial/10-form/Exchange'
-import IdForm from './tutorial/13-ref/IdForm'
-import RefsForm from './tutorial/13-ref/RefsForm'
+//* import IdForm from './tutorial/13-ref/IdForm'
+//* import RefsForm from './tutorial/13-ref/RefsForm'
+import MultipleInput from './tutorial/14-form-valid/MultipleInput'
 
 const App = () => {
   return (
     <>
-      <IdForm />
-      <RefsForm />
+      <MultipleInput />
     </>
   )
 }
