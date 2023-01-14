@@ -1,5 +1,6 @@
 import React from 'react'
-import Birthday from './tutorial/12-Birthday/Birthday'
+//* import Signup from './tutorial/0-Signup/Signup'
+//* import Birthday from './tutorial/12-Birthday/Birthday'
 //* import BMI from './tutorial/11-BMI/BMI'
 //* import Counter from './0109/1-counter/Counter'
 //* import Link from './0109/2-map/Link'
@@ -15,11 +16,14 @@ import Birthday from './tutorial/12-Birthday/Birthday'
 //* import ShoppingCart from './tutorial/9-Exam/ShoppingCart'
 //* import HTML5Form from './tutorial/10-form/HTML5Form'
 //* import Exchange from './tutorial/10-form/Exchange'
+import IdForm from './tutorial/13-ref/IdForm'
+import RefsForm from './tutorial/13-ref/RefsForm'
 
 const App = () => {
   return (
     <>
-      <Birthday />
+      <IdForm />
+      <RefsForm />
     </>
   )
 }

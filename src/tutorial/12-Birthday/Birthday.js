@@ -13,6 +13,10 @@ const Birthday = () => {
     }
     return option
   }
+
+  // const makeOption = (min, max) =>
+  //   Array.from({ length: max - min + 1 }, (_, i) => <option key={i + min} value={i + min}>{i + min}</option>)
+
   useEffect(() => {
     setResult(() => +(now.getFullYear() - year) >= 18 ? 'Yes!' : 'No!')
   }, [year, month, day])
