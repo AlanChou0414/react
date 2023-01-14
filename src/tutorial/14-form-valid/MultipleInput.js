@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import validator from 'validator'
 
 const card = '1111 2222 3333 4444'
+console.log(123)
 const isValid = validator.isCreditCard(card)
 console.log(isValid)
 
