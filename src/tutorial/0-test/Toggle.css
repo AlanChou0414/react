@@ -1,0 +1,8 @@
+.theme-dark {
+  background: rgb(65, 63, 63);
+  color: rgb(159, 159, 159);
+}
+.theme-light {
+  background: rgb(159, 159, 159);
+  color: rgb(65, 63, 63);
+}
