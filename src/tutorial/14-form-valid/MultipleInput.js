@@ -1,20 +1,29 @@
 import React, { useState } from 'react'
 import validator from 'validator'
 
-// const card = '1111 2222 3333 4444'
-// const isValid = validator.isCreditCard(card)
-// console.log(isValid)
+const card = '1111 2222 3333 4444'
+const isValid = validator.isCreditCard(card)
+console.log(isValid)
 
 const MultipleInput = () => {
   const [user, setUser] = useState({
     userName: '',
     email: '',
     account: '',
-    password: ''
+    password: '',
+    showPassword: false
   })
   const handleInputChange = (event) => {
-    // event.target.type / name / value
-    const newUser = { ...user, [event.target.name]: event.target.value }
+    if (event.target.name === 'showPassword') {
+      setUser({ ...user, showPassword: event.target.checked })
+      return
+    }
+    // event.target.type / name / value / checked
+    //! TODO:
+    const newUser = {
+      ...user,
+      [event.target.name]: event.target.value
+    }
     setUser(newUser)
   }
   return (
@@ -27,7 +36,6 @@ const MultipleInput = () => {
           name='userName'
           value={user.userName}
           onChange={handleInputChange}
-
         />
       </div>
       <div>
@@ -37,7 +45,6 @@ const MultipleInput = () => {
           name='email'
           value={user.email}
           onChange={handleInputChange}
-
         />
       </div>
       <div>
@@ -47,18 +54,24 @@ const MultipleInput = () => {
           name='account'
           value={user.account}
           onChange={handleInputChange}
-
         />
       </div>
       <div>
         <label htmlFor="password">password : </label>
         <input
-          type="password"
+          type={user.showPassword ? 'text' : 'password'}
           name='password'
           value={user.password}
           onChange={handleInputChange}
-
         />
+        <input
+          type="checkbox"
+          name="showPassword"
+          id='showPassword'
+          checked={user.showPassword}
+          onChange={handleInputChange}
+        />
+        <label htmlFor="showPassword">Show</label>
       </div>
     </>
   )

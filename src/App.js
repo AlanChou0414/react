@@ -19,6 +19,7 @@ import React from 'react'
 //* import IdForm from './tutorial/13-ref/IdForm'
 //* import RefsForm from './tutorial/13-ref/RefsForm'
 import MultipleInput from './tutorial/14-form-valid/MultipleInput'
+//* import HTML5ValidForm from './tutorial/14-form-valid/HTML5ValidForm'
 
 const App = () => {
   return (
